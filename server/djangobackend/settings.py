@@ -28,7 +28,7 @@ DEBUG = True
 APPEND_SLASH = True
 
 ALLOWED_HOSTS = ["localhost",
-'127.0.0.1']
+'127.0.0.1', 'CD84.eu-gb.cf.appdomain.cloud','CD84.eu-gb.cf.appdomain.cloud/static']
 
 
 # Application definition
