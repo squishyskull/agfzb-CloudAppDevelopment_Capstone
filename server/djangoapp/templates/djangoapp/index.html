@@ -21,10 +21,11 @@
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Best Cars Dealership</a>
+          <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars Dealership</a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'djangoapp:about' %}">About</a>
             </li>
@@ -37,18 +38,19 @@
         <div class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
             <li>
-              <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
-              <a class="btn btn-link" href="">Logout</a>
+              <a class="btn btn-link" href="">{{ user.first_name }}({{ user.username }})</a>
+              <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
             </li>
             {% else %}
             <li>
-              <form class="form-inline" action="#}" method="post"></form>
+              <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
                 {% csrf_token %}
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Username" name="username" >
-                    <input type="password" class="form-control" placeholder="Username" name="psw" >
+                    <input type="password" class="form-control" placeholder="Password" name="psw" >
                     <button class="btn btn-primary" type="submit">Login</button>
-                    <a class="btn btn-link" href="">Sign Up</a>
+                    
+                    <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>              
                   </div>
                 </form>
             </li>
@@ -61,24 +63,6 @@
 
 
 
-
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Username" name="username" >
-      <input type="password" class="form-control" placeholder="Password" name="psw" >
-        <button class="btn btn-primary" type="submit">Login</button>
-          <a class="btn btn-link" href="">Sign Up</a>
-</div>  
-
-
-<form class=""form-inline" action="#" method="post">
-  {% csrf_token %}
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Username" name="username" >
-    <input type="password" class="form-control" placeholder="Password" name="psw" >
-      <button class="btn btn-primary" type="submit">Login</button>
-      <a class="btn btn-link" href="">Sign Up</a>
-  </div>
-</form>
 
 
 
