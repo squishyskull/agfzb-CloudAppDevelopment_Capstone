@@ -36,7 +36,7 @@ jobs:
           ibmcloud login --apikey "$IBM_CLOUD_API" -r "$IBM_CLOUD_REGION" -g "$IBM_CLOUD_GROUP"
         shell: bash
       - name: Target CF
-        run: ibmcloud target --cf-api https://api.eu-gb.cf.cloud.ibm.com -r eu-gb -o Tamara -s United Kingdom
+        run: ibmcloud target --cf
         shell: bash
       - name: List all applications
         run: ibmcloud cf apps
