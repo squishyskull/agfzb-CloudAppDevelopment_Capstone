@@ -12,6 +12,7 @@ from cloudant.error import CloudantException
 import requests
 
 
+
 def main(dict):
     databaseName = "dealerships"
 
