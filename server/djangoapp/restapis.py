@@ -1,6 +1,4 @@
 # import related models here
-import json
-
 import requests
 from .models import CarDealer, DealerReview
 from requests.auth import HTTPBasicAuth
@@ -8,7 +6,7 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_watson.natural_language_understanding_v1 import Features,SentimentOptions
 import time
-
+import json
 
 
 
@@ -89,7 +87,7 @@ def get_dealers_from_cf(url, **kwargs):
     json_result = get_request(url)
     if json_result:
         # Get the row list in JSON as dealers
-        dealers=json_result["body"]
+        dealers=json_result["body"]        
         # For each dealer object
         for dealer in dealers:
             # Get its content in `doc` object

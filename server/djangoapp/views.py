@@ -1,14 +1,19 @@
+from operator import truediv
 from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
+from .models import CarDealer, DealerReview, CarModel, CarMake
 from .restapis import get_dealers_from_cf,get_dealer_reviews_from_cf,post_request, get_dealer_by_id_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
 import logging
-from .models import CarDealer, DealerReview, CarModel, CarMake
-from .restapis import get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_reviews_from_cf, post_request
-
+import json
+from django.db import models
+from django.core import serializers
+from django.utils.timezone import now
+import uuid
 
 
 # Get an instance of a logger
@@ -96,7 +101,7 @@ def registration_request(request):
             return redirect("djangoapp:index")
         else:
             context['message']= "User already exists."
-            return render(request, 'djangoapp/index.html', context)
+            return render(request, 'djangoapp/registration.html', context)
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 
@@ -140,6 +145,7 @@ def add_review(request, id):
         context["cars"] = cars
         
         return render(request, 'djangoapp/add_review.html', context)
+        
     elif request.method == 'POST':
         if request.user.is_authenticated:
             username = request.user.username
