@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+    <body>
+
+    <!--Add a nav bar here -->
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars Dealership</a>
+          </div>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'djangoapp:about' %}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'djangoapp:contact' %}">Contact Us</a>
+              </li>
+              {% if user.is_authenticated %}
+
+              {% endif %}
+            </ul>
+          </div>
+        </nav>     
+
+
+
+
+    <table >
+         
+        <tr>
+          <th style="padding:10px">Address:</th>
+          <th style="padding:20px">Car Dealership <br>
+            1 Car Dealership Road <br>
+            Dealer, 1111</th>
+        
+
+        </tr>
+
+        <tr>
+            <th style="padding:10px">Phone:</th>
+            <th style="padding:20px">1800 CAR DEALER</th>
+        </tr>
+
+        
+      </table>
+
+
+
+</body>
+</h1>
+
+</html>

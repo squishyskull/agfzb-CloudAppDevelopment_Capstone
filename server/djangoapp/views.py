@@ -111,17 +111,18 @@ def get_dealerships(request):
         url = "https://eu-gb.functions.appdomain.cloud/api/v1/web/Tamara_United%20Kingdom/DealershipProject/Get%20all%20dealerships"
         dealerships = get_dealers_from_cf(url)
         context = {}
-        context["dealerships"] = dealerships
+        context["dealership_list"] = dealerships
         return render(request, 'djangoapp/index.html', context)
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
 # def get_dealer_details(request, dealer_id):
 # ...
-def get_dealer_details(request):
-    context = {}
+def get_dealer_details(request, id):
+    
     if request.method == 'GET':
+        context = {}
         url = "https://eu-gb.functions.appdomain.cloud/api/v1/web/Tamara_United%20Kingdom/DealershipProject/Get%20all%20dealerships"
-        dealer = get_dealers_from_cf(url,id)
+        dealer = get_dealer_by_id_from_cf(url, id=id)
         context['dealer']=dealer
 
         review_url = "https://eu-gb.functions.appdomain.cloud/api/v1/web/Tamara_United%20Kingdom/DealershipProject/get-review"
